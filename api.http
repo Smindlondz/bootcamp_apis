@@ -1,0 +1,19 @@
+POST http://localhost:6007/api/phonebill/total HTTP/1.1
+content-type: application/json
+
+{
+    "bill" : "call,sms,call,sms,sms,data,sms"
+}
+
+###
+GET http://localhost:6007/api/phonebill/prices HTTP/1.1
+content-type: application/json
+
+###
+POST http://localhost:6007/api/phonebill/prices HTTP/1.1
+content-type: application/json
+
+{
+    "type" : "call",
+    "price" : "1.80"
+}

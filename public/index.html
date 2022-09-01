@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- <script src="../wordGame.js" defer></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;900&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+    <header>
+        <h1>AlpineJS widgets for Bootcamp functions</h1>
+    </header>
+    <div class="container">
+
+        <!-- <div class="box" x-data="greetWidget">
+            <h2>Greet widget</h2>
+            <div class="message" x-text="greetMessage">
+               
+            </div>
+            <label for="string">Please submit your name: </label>
+            <input type="text" id="string" x-model="name">
+
+            <button x-on:click="greetMe">submit</button>
+        </div> -->
+
+        <!-- <div class="box" x-data="shiftWidget">
+            
+            <h2>Transport cost per shift</h2>
+            <div x-text="shiftMsg" class="message">
+              
+            </div>
+            <fieldset>
+                <legend>Please select your shift: </legend>
+
+                <div>
+                    <input x-model="shift" type="radio" name="cost" id="morning" 
+                    value="morning" @change="displayShift">
+                    <label for="morning">Morning</label><br />
+                </div>
+
+                <div>
+                    <input x-model="shift" type="radio" name="cost" id="afternoon" 
+                    value="afternoon" @change="displayShift">
+                    <label for="afternoon">Afternoon</label><br />
+                </div>
+
+                <div>
+                    <input x-model="shift" type="radio" name="cost" id="night"
+                     value="nightshift" @change ="displayShift">
+                    <label for="night">Night</label>
+                </div>
+            </fieldset>
+        </div> -->
+
+        <div class="box" x-data="{
+            phoneUsage : '',
+            billAmount : '',
+            mySentence() {
+                api/phonebill/total?bill=sms,sms,data,call
+                axios.post(`/api/phonebill/total?bill=${this.phoneUsage}`)
+                .then((result) => {
+                    this.billAmount = result.data.
+                })
+            }
+        }">
+            <h2>Phone bill calculator</h2>
+            <div class="message" x-text="billAmount">
+                
+            </div>
+            <label for="msg">Enter your phone usages:</label>
+            <input type="text" id="msg" x-model="phoneUsage">
+            <button x-on:click="totalBill">submit</button>
+        </div>
+
+    </div>
+    <div class="container" x-data="
+{
+            sentence : '',
+            longWord : '',
+            shortWord : '',
+            wordLength : null,
+
+            mySentence() {
+                axios.get(`/api/word_game?sentence=${this.sentence}`)
+                .then((result) => {
+                    this.longWord = result.data.longestWord;
+                    this.shortWord = result.data.shortestWord;
+                    this.wordLength = result.data.sum;
+                })
+            }
+    }">
+        <!-- 
+        <div class="box" x-data="enoughAirtimeWidget">
+            <h2>Enough airtime?</h2>
+            <div class="message" x-text="billAmount">
+                
+            </div>
+
+            <div>
+                <label for="msg">Enter your phone usages:</label>
+                <input type="text" id="msg" x-model="phoneUsage">
+            </div>
+            <label for="msg">Enter available airtime:</label>
+            <input type="text" id="msg" x-model="availableAmount">
+
+            <button x-on:click="totalBill">submit</button>
+        </div> -->
+        <div class="box">
+            <h2>Word puzzle game</h2>
+            Longest word:<div class="message" x-text="longWord">
+                <!-- The message will be displayed here... -->
+            </div> <span>
+                Shortest word:<div class="message" x-text="shortWord">
+                    <!-- The message will be displayed here... -->
+                </div>
+                Number of Letters:<div class="message" x-text="wordLength">
+
+                </div>
+                <label for="string">Type your sentence in the field: </label>
+                <input type="text" id="string" x-model="sentence">
+
+                <button @click="mySentence">submit</button>
+        </div>
+
+        <!-- <div class="box" x-data="expensiveWidget">
+       
+            <h2>Expensive items</h2>
+            <div class="message" x-text="JSON.stringify(data)" x-show="data.length > 0">
+                
+            </div>
+            
+            <label for="msg">Search for items with qty over:</label>
+            <input type="text" id="msg" x-model="threshold">
+            <button @click="expensiveItems">submit</button>
+            
+        </div> -->
+
+    </div>
+</body>
+<!-- <script src="../wordGame-widget.js"></script> -->
+
+</html>
